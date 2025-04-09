@@ -21,8 +21,7 @@ def Off():
     global click_counter
     global stopper    
     stopper=True 
-    color="white"
-    root.configure(background=color)
+    root.configure(background="white")
     light_button.configure(text="On",command=On)
    
 
@@ -43,8 +42,6 @@ def color_changer():
         color="red"
     elif color_change==2:
         color="blue"
-    elif stopper== True:
-        color="white"
     else:
         color="purple"
     root.configure(background=color)
