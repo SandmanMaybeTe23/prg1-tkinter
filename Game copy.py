@@ -1,60 +1,60 @@
 from tkinter import *
 from random import randint
-
 root = Tk()
 root.title("light show")
 color="white"
 stopper=False
-
+click_counter=0
 
 
 def On():
+    
     global stopper
+    global click_counter
     stopper=False
     light_button.configure(text="Off",command=Off)
     color_changer()
-    
+
 
 
 def Off():
-    global stopper
-    stopper=True
-    light_button.configure(text="On",command=On)
+    global click_counter
+    global stopper    
+    stopper=True 
     color="white"
     root.configure(background=color)
+    light_button.configure(text="On",command=On)
+   
 
+
+
+
+    
+
+
+    
 
 
 
 def color_changer():
     global stopper
-    if stopper==False:
-        color_changer=randint(1,3)
-        if color_changer==1:
-            color="red"
-        elif color_changer==2:
-            color="blue"
-        else:
-            color="purple"
-        root.configure(background=color)
-        root.after(10,On)
+    color_change=randint(1,3)
+    if color_change==1:
+        color="red"
+    elif color_change==2:
+        color="blue"
+    elif stopper== True:
+        color="white"
     else:
-          print("")
+        color="purple"
+    root.configure(background=color)
+    root.after(stopper==False,color_changer)
+
+
         
 
 
-
-
-
-
-
-
-
-
-
-            
-                
-                  
+                              
 #def change_color():
  #   global color
   #  global stopper
@@ -70,28 +70,12 @@ def color_changer():
     #root.configure(background=color)
     #root.after(10,change_color)
 
-    
-
- 
-    
-
-
-
-
-
-        
-     
-
- 
-
-
-
 
 light_button=Button(root,text="On",width=50,command=On)
 light_button.pack()
 
 
-root.after_idle(10,On)
+root.after_idle(10,color_changer)
 root.mainloop()
 
 
