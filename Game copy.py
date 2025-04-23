@@ -48,29 +48,6 @@ def color_changer():
 
 
 
-
-
-
- 
-
-
-                              
-#def change_color():
- #   global color
-  #  global stopper
-   # light_button.configure(command=off)
-    #if stopper !=False:
-     #   color_picker=randint(1,3)
-      #  if color_picker==1:
-       #     color="blue"
-        #elif color_picker==2:
-         #   color="red"
-       # else:
-        #    color ="purple" 
-    #root.configure(background=color)
-    #root.after(10,change_color)
-
-
 light_button=Button(root,text="",width=5000, height=5000,command=On)
 light_button.pack()
 
@@ -86,12 +63,3 @@ root.mainloop()
 
 
 
-   ##color_picker=randint(1,3)
-        #if color_picker==1:
-                #color="blue"
-       # elif color_picker==2:
-            # color="red"
-       # else:
-          #   color ="purple" 
-       # root.configure(background=color) 
-        #root.after(10,change_color)
