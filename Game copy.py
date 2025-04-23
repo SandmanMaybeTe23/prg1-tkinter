@@ -4,35 +4,29 @@ root = Tk()
 root.title("light show")
 color="white"
 stopper=False
-click_counter=0
+root.resizable(True,True)
+
+def click(event):
+    On()
+    
 
 
 def On():
-    
     global stopper
-    global click_counter
     stopper=False
-    light_button.configure(text="Off",command=Off)
+    light_button.configure(text="",command=Off)
     color_changer()
 
 
 
+def color_change_to_default():
+    light_button.configure(background="white")    
+    light_button.configure(text="",command=On)
+
+
 def Off():
-    global click_counter
-    global stopper    
-    stopper=True 
-    root.configure(background="white")
-    light_button.configure(text="On",command=On)
-   
-
-
-
-
-    
-
-
-    
-
+    global stopper
+    stopper=True
 
 
 def color_changer():
@@ -44,11 +38,20 @@ def color_changer():
         color="blue"
     else:
         color="purple"
-    root.configure(background=color)
-    root.after(stopper==False,color_changer)
+    light_button.configure(background=color)
+    if stopper== False:
+        root.after(stopper==False,color_changer)
+    else:
+        color_change_to_default()
+    
 
 
-        
+
+
+
+
+
+ 
 
 
                               
@@ -68,12 +71,17 @@ def color_changer():
     #root.after(10,change_color)
 
 
-light_button=Button(root,text="On",width=50,command=On)
+light_button=Button(root,text="",width=5000, height=5000,command=On)
 light_button.pack()
 
 
-root.after_idle(10,color_changer)
+
+
+
 root.mainloop()
+
+
+
 
 
 
