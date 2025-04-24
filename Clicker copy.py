@@ -2,7 +2,7 @@ from tkinter import *
 
 root = Tk()
 root.title("clicker")
-root.configure(background="white")
+root.configure(background="brown")
 money=0
 
 cps_amount=0
@@ -113,7 +113,7 @@ def clicks():
 
 
 
-show_money = Label(root,text=money,width=5,height=5, anchor="center",background="white",)
+show_money = Label(root,text=money,width=100,height=5, anchor="center",background="white",)
 show_money.pack(padx=15,pady=150)
 
 
@@ -133,7 +133,9 @@ buy_upgrade4=Button(root,text=f"{cost4}$+10 Per second", width=20,height=20,comm
 buy_upgrade4.pack(side=LEFT,padx=35,pady=20)
 
 buy_upgrade5=Button(root,text=f"{cost5}$+20 Per second", width=20,height=20,command= cps_add_5)
-buy_upgrade5.pack(side=LEFT,padx=40,pady=20)
+buy_upgrade5.pack(side=LEFT,padx=37,pady=20)
+
+
 
 
 cps()
