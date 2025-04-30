@@ -2,11 +2,11 @@ from tkinter import *
 
 root = Tk()
 root.title("clicker")
-root.configure(background="brown")
+root.configure(background="purple")
 money=0
 
 cps_amount=0
-cps_done=False
+
 adding=0
 cost=0
 cost1=10
@@ -16,6 +16,38 @@ cost4=200
 cost5=500
 root.geometry("300x250")
 
+def color_changer():
+    global money
+    global cost1
+    global cost2
+    global cost4
+    global cost5
+    
+    if money>=cost1:
+        buy_upgrade.configure(background="light green")
+    else:
+        buy_upgrade.configure(background="red")
+
+    if money>=cost2:
+        buy_upgrade2.configure(background="light green")
+    else:
+        buy_upgrade2.configure(background="red")
+    
+    if money>=cost3:
+        buy_upgrade3.configure(background="light green")
+    else:
+        buy_upgrade3.configure(background="red")
+
+    if money>=cost4:
+        buy_upgrade4.configure(background="light green")
+    else:
+        buy_upgrade4.configure(background="red")
+
+    if money>=cost5:
+        buy_upgrade5.configure(background="light green")
+    else:
+        buy_upgrade5.configure(background="red")
+    root.after(10,color_changer)
      
 
 
@@ -97,8 +129,6 @@ def cps_add_5():
     
     
 
-
-    
     
 
 
@@ -139,5 +169,6 @@ buy_upgrade5.pack(side=LEFT,padx=37,pady=20)
 
 
 cps()
+color_changer()
 
 root.mainloop()
