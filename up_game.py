@@ -22,13 +22,54 @@ text_box.place(relx = x_cord,
 
 
 def right_key(event):
+    global x_cord
 
-    if x_cord !=
+    if x_cord < 0.9  :
+        x_cord+=0.01
+        text_box.place_configure(relx=x_cord)
+    elif x_cord>0.9:
+        print()
+        
+
+def left_key(event):
+    global x_cord
+
+    if x_cord > 0.1:
+        x_cord-=0.01
+        text_box.place_configure(relx=x_cord)
+    elif x_cord < 0.1:
+        print("") 
+
+
+def up_key(event):
+    global y_cord
+    if y_cord==1.0:
+        y_cord+=2
+    else:
+        print
+
+
+def physics():
+    global y_cord
+    time=0
+    if y_cord>1.0:
+        y_cord-=1*time
+        time+=1    
+    elif y_cord==1.0:
+        print
+    else:
+        print
+    root.after(10,physics)
+     
+        
 
 
 
 
 root.bind("<Right>", right_key )
+root.bind("<Left>", left_key)
+root.bind("<Up>")
+
 
 
 
