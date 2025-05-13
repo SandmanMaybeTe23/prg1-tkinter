@@ -30,14 +30,14 @@ root.geometry("300x300")
 enemy_spawner1=Label(root,text="", width=45,height=5, background="red")
 enemy_spawner1.place(relx = 0.3, x =-2, y = enemy1_height, anchor = NE)
 
-enemy_Spawner2=Label(root,text="", width=45,height=5, background="red")
-enemy_Spawner2.place(relx = 0.5, x =-2, y = enemy2_height, anchor = NE)
+enemy_spawner2=Label(root,text="", width=45,height=5, background="red")
+enemy_spawner2.place(relx = 0.5, x =-2, y = enemy2_height, anchor = NE)
 
-enemy_Spawner3=Label(root,text="", width=45,height=5, background="red")
-enemy_Spawner3.place(relx = 0.7, x =-2, y = enemy3_height, anchor = NE)
+enemy_spawner3=Label(root,text="", width=45,height=5, background="red")
+enemy_spawner3.place(relx = 0.7, x =-2, y = enemy3_height, anchor = NE)
 
-enemy_Spawner4=Label(root,text="", width=46,height=5, background="red")
-enemy_Spawner4.place(relx = 0.9515, x =-2, y = enemy4_height, anchor = NE)
+enemy_spawner4=Label(root,text="", width=46,height=5, background="red")
+enemy_spawner4.place(relx = 0.9515, x =-2, y = enemy4_height, anchor = NE)
 
 
 start_box=Label(root,text="press enter to start", width=15,height=10, background="white")
@@ -86,86 +86,42 @@ def start(event):
 def enemy_picker():
     global two_picks
     global use_enemy1
+    global use_enemy2
+    global use_enemy3
+    global use_enemy4
     global already_use1
 
-    enemy_active=randint(0,4)
-
-    if enemy_active==0 and two_picks==1 or two_picks==2:
-           
-           if already_use1==False and use_enemy1==False:
-                enemy1()
-                already_use1=True
-                use_enemy1=False
-                two_picks-=1
-           
-           elif already_use1==False and use_enemy1==True:
-                already_use1=True
-                use_enemy1=False
-                two_picks-=1
-
-           else:
-               print("")
-               
-    elif enemy_active==1 and two_picks==1 or two_picks==2:
-        if already_use2==False and use_enemy2==False:
-            enemy2()
-            already_use2=True
-            use_enemy2=False
-            two_picks-=1
-
-        elif already_use2==False and use_enemy2==True:
-            already_use2=True
-            use_enemy2=False
-            two_picks-=1
-        else:
-            print("")
-
-    elif enemy_active==2 and two_picks==1 or two_picks==2:
-        if already_use3==False and use_enemy3==False:
-            enemy3()
-            already_use3=True
-            use_enemy3=False
-            two_picks-=1
-
-        elif already_use2==False and use_enemy3==True:
-            already_use3=True
-            use_enemy3=False
-            two_picks-=1
-        else:
-            print("")
-
-    elif enemy_active==3 and two_picks==1 or two_picks==2:
-        if already_use4==False and use_enemy4==False:
-            enemy4()
-            already_use4=True
-            use_enemy4=False
-            two_picks-=1
-        elif already_use4 == False and use_enemy4 == True:
-            already_use4=True
-            use_enemy4=False
-            two_picks-=1
-        else:
-            print("")
-
-    elif enemy_active==4 and two_picks==1 or two_picks==2:
-        friend()
-        two_picks-=1
-
-    else:
+    if two_picks==0:
         print
-        
+        enemy_active=0
+    else:
+        enemy_active=randint(0,1)
 
-    
+    if enemy_active==1:
+        two_picks-=1
+        if already_use1==False:
+            enemy3()
+            enemy2()
+            already_use1=True
+        else:
+            use_enemy1=False
+            use_enemy4=False
+    else:
+        print()     
+    root.after(1000,enemy_picker)
+
+
 def enemy1():
     global enemy1_height
     global use_enemy1
     global two_picks
     
+    
     if enemy1_height>575:
         enemy1_height=0
         enemy_spawner1.place_configure(y=enemy1_height)
-        use_enemy1=True
         two_picks+=1
+        use_enemy1=True
 
     elif use_enemy1==False:
         enemy1_height+=25
@@ -175,22 +131,66 @@ def enemy1():
         print
     root.after(500,enemy1)
 
+
 def enemy2():
-    print("yea")
-
-def enemy3():
-    print("yea")
-
-def enemy4():
-    print("yea")
-
-def friend():
+    global enemy2_height
+    global use_enemy2
     global two_picks
 
-    if two_picks==1:
+    if enemy2_height>575:
+        enemy2_height=0
+        enemy_spawner1.place_configure(y=enemy2_height)
         two_picks+=1
+        use_enemy2=True
+
+    elif use_enemy2==False:
+        enemy2_height+=25
+        enemy_spawner2.place_configure(y=enemy2_height)
+    
     else:
-        root.after(1000,friend)
+        print
+    root.after(500,enemy2)
+
+
+def enemy3():
+    global enemy3_height
+    global use_enemy3
+    global two_picks
+
+    if enemy3_height>575:
+        enemy3_height=0
+        enemy_spawner3.place_configure(y=enemy3_height)
+        two_picks+=1
+        use_enemy3=True
+
+    elif use_enemy3==False:
+        enemy3_height+=25
+        enemy_spawner3.place_configure(y=enemy3_height)
+    
+    else:
+        print
+    root.after(500,enemy3)
+
+def enemy4():
+    global enemy4_height
+    global use_enemy4
+    global two_picks
+
+    if enemy4_height>575:
+        enemy4_height=0
+        enemy_spawner4.place_configure(y=enemy4_height)
+        two_picks+=1
+        use_enemy4=True
+
+    elif use_enemy4==False:
+        enemy4_height+=25
+        enemy_spawner4.place_configure(y=enemy4_height)
+    
+    else:
+        print
+    root.after(500,enemy4)
+
+
 
 
 
