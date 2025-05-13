@@ -100,7 +100,7 @@ def enemy_picker():
     if enemy_active==1:
         two_picks-=1
         if already_use1==False:
-            enemy3()
+            enemy4()
             enemy2()
             already_use1=True
         else:
@@ -139,7 +139,7 @@ def enemy2():
 
     if enemy2_height>575:
         enemy2_height=0
-        enemy_spawner1.place_configure(y=enemy2_height)
+        enemy_spawner2.place_configure(y=enemy2_height)
         two_picks+=1
         use_enemy2=True
 
