@@ -10,6 +10,9 @@ move_right=0.005
 left_active=False
 right_active=False
 
+cool_down_dash=2
+
+
 enemy1_height=0
 use_enemy1=True
 
@@ -102,12 +105,33 @@ def left_key(event):
         print
 
 
-def space_left(event):
-    global left_active
+def dash_left(event):
     global x_cord
-    x_cord-=0.010
-    player_box.place_configure(relx=x_cord)
-    print("nyehehhehehehhehehehehehhe")
+    global cool_down_dash
+    if cool_down_dash ==1:
+        cool_down_dash =0
+        x_cord-=0.10
+        player_box.place_configure(relx=x_cord)
+        print("nyehehhehehehhehehehehehhe")
+
+
+
+    
+def dash_right(event):
+    global x_cord
+    global cool_down_dash
+    
+    if cool_down_dash==1:
+        cool_down_dash =0
+        print(cool_down_dash)
+        x_cord+=0.10
+        player_box.place_configure(relx=x_cord)
+        print("nyehehhehehehhehehehehehhe2")
+    else:
+        print
+
+
+
 
 
 def active_checker():
@@ -242,7 +266,6 @@ def enemy1():
         print
     root.after(500,enemy1)
 
-
 def enemy2():
     global enemy2_height
     global use_enemy2
@@ -302,6 +325,20 @@ def enemy4():
     root.after(500,enemy4)
 
 
+def cool_down():
+    global cool_down_dash
+    
+    if cool_down_dash<1:
+        cool_down_dash+=0.5
+        print(cool_down_dash)
+    elif cool_down_dash>1:
+        cool_down_dash=1
+    else:
+        print
+
+
+
+    root.after(1000,cool_down)
 
 def game_over():
     global enemy1_height
@@ -328,9 +365,10 @@ def game_over():
 root.bind("<Right>", right_key )
 root.bind("<Left>", left_key)
 root.bind("<Return>", start )
-root.bind("<Shift-KeyPress>",space_left )
+root.bind("<Left-Left>",dash_left )
+root.bind("<Control-Right>", dash_right )
 
-
+cool_down()
 game_over()
 active_checker()
 
