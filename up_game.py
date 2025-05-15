@@ -152,9 +152,6 @@ def active_checker():
     root.after(200,active_checker)
         
 
-
-
-
     
 def slow_down_left():
     global move_left
@@ -365,7 +362,7 @@ def game_over():
 root.bind("<Right>", right_key )
 root.bind("<Left>", left_key)
 root.bind("<Return>", start )
-root.bind("<Left-Left>",dash_left )
+root.bind("<Control-Left>",dash_left )
 root.bind("<Control-Right>", dash_right )
 
 cool_down()
