@@ -2,9 +2,9 @@ from tkinter import *
 from random import randint
 
 
-x_cord=0.3
+x_cord=0.3 # player_position
 
-move_left=0.005
+move_left=0.005 # move_distance MOVE_DISTANCE
 move_right=0.005
 
 left_active=False
@@ -64,11 +64,20 @@ player_box=Label(root,text="",background="black",width=5,height=5,)
 player_box.place(relx = 0.3, x =-1, y = 575, anchor = NE)
 
 
+# def move(event):
+#     if event.keycode == 39:
+#         player_position += max_speed
+
 
 def right_key(event):
     global x_cord
     global move_right
 
+    print(event.keycode) # 39 är högerpil
+    # if x_cord >= 0.95:
+    #     return
+
+    # x_cord += move_right
 
     if x_cord < 0.95:
         x_cord+=move_right
@@ -242,6 +251,19 @@ def enemy_picker():
 
     root.after(500,enemy_picker)
 
+
+# class Enemy: 
+#     def __init__(self, x, y):
+#         self.x: x
+#         self.y: y
+#         self.height: 40
+#         self.width: 100
+
+#     def move():
+#         print("move mr enemy")
+
+# enemy1 = Enemy(0, 100)
+# enemy1.move()
 
 def enemy1():
     global enemy1_height
